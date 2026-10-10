@@ -1,0 +1,146 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Vazir, sans-serif; 
+    background: linear-gradient(352deg, rgba(194, 52, 194, 1) 15%, rgba(144, 29, 179, 1) 88%);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden; 
+}
+
+@font-face {
+    font-family: Vazir;
+    src: url(Vazir.ttf);
+}
+
+p {
+    user-select: none;
+}
+
+.cal {
+    width: 95%;
+    max-width: 363px;
+    padding: 16px;
+    border-radius: 24px;
+    background: rgba(155, 64, 198, 0.9);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.title {
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.info {
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 0.8rem;
+}
+
+#display {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 16px;
+    height: 75px;
+    width: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 20px;
+    font-size: 28px;
+    margin-bottom: 15px;
+    overflow-x: auto;
+    white-space: nowrap;
+    direction: ltr;
+}
+
+#display::-webkit-scrollbar {
+    display: none;
+}
+
+/* Rows Layout */
+.parent-radif1,
+.parent-radif2,
+.parent-radif3,
+.parent-radif4,
+.parent-radif5,
+.parent-radif6 {
+    margin-top: 10px;
+    gap: 10px;
+    display: flex;
+}
+
+.btn {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.radif-1-item {
+    padding: 15px 10px;
+    background: rgba(211, 159, 214, 0.3);
+    border-radius: 16px;
+    text-align: center;
+    color: white;
+    flex: 1; 
+}
+
+.radif-1-item1 { flex: 2; } 
+
+.radif2-5-item {
+    padding: 15px 10px;
+    background: rgba(211, 159, 214, 0.3);
+    border-radius: 16px;
+    text-align: center;
+    color: white;
+    flex: 1;
+}
+
+.btn:hover {
+    background: rgba(211, 159, 214, 0.6);
+    transform: translateY(-2px);
+}
+
+    .bg-pink {
+    background: rgba(255, 3, 255, 0.5) !important;
+}
+
+.bg-pink:hover {
+    background: rgba(255, 3, 255, 0.8) !important;
+}
+
+.bg-green {
+    background: #08bc53 !important;
+}
+
+.bg-green:hover {
+    background: #0bbd5e !important;
+}
+
+.radif-6-item1, .radif-6-item2, .radif-6-item3 {
+    padding: 12px 5px;
+    background: rgba(211, 159, 214, 0.3);
+    border-radius: 16px;
+    text-align: center;
+    color: white;
+    flex: 1;
+}
+
+.radif-6-item1 { flex: 2; }
+
+
+@media screen and (max-width: 390px) {
+    body {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
