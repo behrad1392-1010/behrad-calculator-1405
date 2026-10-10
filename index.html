@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator | Behrad-xD</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="cal">
+      <h2 class="title">Calculator site</h2>
+      <p class="info">created by Behrad-xD</p>
+
+      <!-- نمایشگر -->
+      <div id="display">0</div>
+
+      <div class="parent-radif1">
+        <p class="radif-1-item btn">AC</p>
+        <p class="radif-1-item btn">DEL</p>
+        <p class="radif-1-item bg-pink btn">÷</p>
+      </div>
+
+      <div class="parent-radif2">
+        <p class="radif2-5-item btn">7</p>
+        <p class="radif2-5-item btn">8</p>
+        <p class="radif2-5-item btn">9</p>
+        <p class="radif2-5-item bg-pink btn">×</p>
+      </div>
+
+      <div class="parent-radif3">
+        <p class="radif2-5-item btn">4</p>
+        <p class="radif2-5-item btn">5</p>
+        <p class="radif2-5-item btn">6</p>
+        <p class="radif2-5-item bg-pink btn">-</p>
+      </div>
+
+      <div class="parent-radif4">
+        <p class="radif2-5-item btn">1</p>
+        <p class="radif2-5-item btn">2</p>
+        <p class="radif2-5-item btn">3</p>
+        <p class="radif2-5-item bg-pink btn">+</p>
+      </div>
+
+      <div class="parent-radif5">
+        <p class="radif2-5-item btn">±</p>
+        <p class="radif2-5-item btn">0</p>
+        <p class="radif2-5-item btn">%</p>
+        <p class="radif2-5-item bg-green btn">=</p>
+      </div>
+
+      <div class="parent-radif6">
+        <p class="radif-6-item1 btn">Copy</p>
+        <p class="radif-6-item2 btn">Help</p>
+        <p class="radif-6-item3 btn">+</p>
+      </div>
+    </div>
+
+    <script>
+      const display = document.getElementById("display");
+      const buttons = document.querySelectorAll(".btn");
+      let currentInput = "";
+
+      function handleInput(value) {
+        if (value === "AC") {
+          currentInput = "";
+          display.innerText = "0";
+        } else if (value === "DEL") {
+          currentInput = currentInput.slice(0, -1);
+          display.innerText = currentInput || "0";
+        } else if (value === "=") {
+          try {
+            let expression = currentInput.replace(/×/g, "*").replace(/÷/g, "/");
+            currentInput = eval(expression).toString();
+            display.innerText = currentInput;
+          } catch {
+            display.innerText = "Error";
+            currentInput = "";
+          }
+        } else if (["Copy", "Help", "±"].includes(value)) {
+          // فعلاً کاری انجام نمی‌دهد
+        } else {
+          currentInput += value;
+          display.innerText = currentInput;
+        }
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          handleInput(button.innerText);
+        });
+      });
+
+      document.addEventListener("keydown", (event) => {
+        const key = event.key;
+        let simulatedValue = null;
+
+        if (
+          (key >= "0" && key <= "9") ||
+          key === "." ||
+          key === "+" ||
+          key === "-" ||
+          key === "%"
+        ) {
+          simulatedValue = key;
+        } else if (key === "*") {
+          simulatedValue = "×";
+        } else if (key === "/") {
+          simulatedValue = "÷";
+        } else if (key === "Enter") {
+          event.preventDefault();
+          simulatedValue = "=";
+        } else if (key === "Backspace") {
+          event.preventDefault();
+          simulatedValue = "DEL";
+        } else if (key === "Escape") {
+          event.preventDefault();
+          simulatedValue = "AC";
+        }
+
+        if (simulatedValue !== null) {
+          handleInput(simulatedValue);
+        }
+      });
+    </script>
+
+    <a href="" target="_blank"></a>
+  </body>
+</html>
